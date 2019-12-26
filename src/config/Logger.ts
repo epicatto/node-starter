@@ -1,21 +1,25 @@
-import constants from './constants';
-import * as logger from 'winston';
+import constants from "./constants";
+import * as logger from "winston";
 
 const date = new Date();
 const fileName = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}.log`;
 logger.configure({
-  level: 'debug',
+  level: "debug",
   format: logger.format.combine(
     logger.format.colorize(),
-    logger.format.simple()),
+    logger.format.simple()
+  ),
   transports: [
-    new logger.transports.File({ filename: `logs/${fileName}`, level: 'debug' }),
+    new logger.transports.File({
+      filename: `logs/${fileName}`,
+      level: "debug"
+    }),
     new logger.transports.Console()
   ]
 });
 
 export class Logger {
-  public static readonly shouldLog: boolean = constants.environment !== 'test';
+  public static readonly shouldLog: boolean = constants.environment !== "test";
   public static readonly console = logger;
 
   public static log(...args: any[]): void {
@@ -42,5 +46,4 @@ export class Logger {
     if (args.length <= 1) args = args[0];
     return JSON.stringify(args, null, 4);
   }
-
 }

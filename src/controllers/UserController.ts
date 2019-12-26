@@ -37,7 +37,7 @@ export class UserController extends Controller {
     @Query("field") field?: string,
     @Query("filter") filter?: string
   ): Promise<IPaginationDto> {
-    return this.service.getPaginated({page, limit, sort, field, filter});
+    return this.service.getPaginated({ page, limit, sort, field, filter });
   }
 
   @Response(400, "Bad request")
