@@ -12,7 +12,7 @@ logger.configure({
   transports: [
     new logger.transports.File({
       filename: `logs/${fileName}`,
-      level: "debug"
+      level: 'debug'
     }),
     new logger.transports.Console()
   ]
