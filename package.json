@@ -14,7 +14,7 @@
     "test:coverage": "yarn test:unit && google-chrome ./coverage/index.html",
     "start": "yarn start:dev",
     "start:local": "yarn build:tsoa && yarn env:local ts-node-dev --respawn ./src",
-    "start:dev": "yarn build:tsoa && yarn env:dev ts-node-dev --respawn ./src",
+    "start:dev": "yarn build:tsoa && yarn env:dev node -r ts-node/register ./src/index.ts",
     "build": "yarn build:prod",
     "build:routes": "tsoa routes",
     "build:swagger": "tsoa swagger --basePath /service",
