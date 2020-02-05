@@ -52,7 +52,7 @@
     "ts-mockito": "^2.3.1",
     "ts-node": "^5.0.1",
     "ts-node-dev": "^1.0.0-pre.18",
-    "tsoa": "^2.1.4",
+    "tsoa": "2.1.4",
     "typeorm": "^0.2.9",
     "typescript": "^2.8.1",
     "umzug": "^2.1.0",
