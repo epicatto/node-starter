@@ -99,12 +99,9 @@ workflows:
       - build:
           requires:
             - yarn
-          filters:
-            branches:
-              only:
-                - develop
       - deploy-dev:
           requires:
+            - lint
             - unit-tests
             - build
           filters:
