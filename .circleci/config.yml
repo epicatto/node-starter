@@ -76,10 +76,11 @@ jobs:
         - run:
             name: Build and push Docker image to development
             command: |
+              docker build -t fabripautasso/node-starter-v2 .
               docker pull wagoodman/dive
               docker run --rm -it \
                 -v /var/run/docker.sock:/var/run/docker.sock \
-                wagoodman/dive:latest CI=true dive build -t fabripautasso/node-starter-v2 .
+                wagoodman/dive:latest --ci fabripautasso/node-starter-v2 --lowestEfficiency=0.7 --highestUserWastedPercent=0.55
               docker login -u $DOCKER_USER -p $DOCKER_PASS
               docker push fabripautasso/node-starter-v2
 
