@@ -102,11 +102,11 @@ workflows:
           filters:
             branches:
               only:
-                - docker-dive
+                - develop
       - deploy-dev:
           requires:
             - unit-tests
             - build
           filters:
             branches:
-              only: docker-dive
+              only: develop
