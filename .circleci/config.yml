@@ -80,7 +80,7 @@ jobs:
               docker pull wagoodman/dive
               docker run --rm -it \
                 -v /var/run/docker.sock:/var/run/docker.sock \
-                wagoodman/dive:latest --ci fabripautasso/node-starter-v2 --lowestEfficiency=0.7 --highestUserWastedPercent=0.55
+                wagoodman/dive:latest --ci fabripautasso/node-starter-v2 --lowestEfficiency=0.8 --highestUserWastedPercent=0.45
               docker login -u $DOCKER_USER -p $DOCKER_PASS
               docker push fabripautasso/node-starter-v2
 
