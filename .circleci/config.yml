@@ -76,7 +76,10 @@ jobs:
         - run:
             name: Build and push Docker image to development
             command: |
-              docker build -t fabripautasso/node-starter-v2 .
+              wget https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb
+              sudo apt install ./dive_0.9.2_linux_amd64.deb
+              CI=true dive
+              dive build -t fabripautasso/node-starter-v2 .
               docker login -u $DOCKER_USER -p $DOCKER_PASS
               docker push fabripautasso/node-starter-v2
 
@@ -98,11 +101,11 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - docker-dive
       - deploy-dev:
           requires:
             - unit-tests
             - build
           filters:
             branches:
-              only: master
+              only: docker-dive
