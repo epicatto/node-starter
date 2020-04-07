@@ -77,6 +77,10 @@ jobs:
             name: Build and push Docker image to development
             command: |
               docker build -t fabripautasso/node-starter-v2 .
+              docker pull wagoodman/dive
+              docker run --rm -it \
+                -v /var/run/docker.sock:/var/run/docker.sock \
+                wagoodman/dive:latest --ci fabripautasso/node-starter-v2 --lowestEfficiency=0.8 --highestUserWastedPercent=0.45
               docker login -u $DOCKER_USER -p $DOCKER_PASS
               docker push fabripautasso/node-starter-v2
 
@@ -95,14 +99,11 @@ workflows:
       - build:
           requires:
             - yarn
-          filters:
-            branches:
-              only:
-                - master
       - deploy-dev:
           requires:
+            - lint
             - unit-tests
             - build
           filters:
             branches:
-              only: master
+              only: develop
