@@ -24,11 +24,9 @@ RUN	cd /var/www/node \
     && yarn build:tsoa \
     && yarn cache clean \
     && npm prune --production \
-    && rm -rf node_modules/typescript/lib/* \
     && rm -rf node_modules/aws-sdk/dist/* \
     && rm -rf node_modules/aws-sdk/clients/* \
     && rm -rf node_modules/aws-sdk/apis/* \
-    && rm -rf node_modules/swagger-ui-express/static/* \
     && rm -rf node_modules/sinon/pkg/*
 
 
@@ -52,7 +50,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash \
     && mkdir /etc/service/pm2 \
     && chmod -R 777 /etc/service/pm2
 
-# Open local port 3000
+# Open local port 3030
 EXPOSE	3030
 
 ADD ./scripts/pm2.sh /etc/service/pm2/run
