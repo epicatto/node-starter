@@ -21,4 +21,15 @@ export class FileController extends Controller {
     const response = request.res as express.Response;
     return await this.service.downloadFile(response);
   }
+
+  /**
+   * @summary Uploads file to project uploads directory
+   *
+   * @param request
+   */
+  @Post("upload")
+  public async uploadFile(@Request() request: express.Request): Promise<any> {
+    // file will be in request.nextonUploadFile it is a buffer
+    return await this.service.uploadFile(request);
+  }
 }
