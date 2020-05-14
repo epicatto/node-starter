@@ -24,11 +24,25 @@ export class UserController extends Controller {
     super();
   }
 
+  /**
+   * @summary Retrieves the user by id
+   *
+   * @param {string} id The id of the user
+   */
   @Get("{id}")
   public async getById(id: string): Promise<IUserDto> {
     return this.service.getById(id);
   }
 
+  /**
+   * @summary Retrieves a paginated list of users
+   *
+   * @param {number} page number of pages
+   * @param {number} limit pages limit
+   * @param {string} sort sort order ASC|DESC
+   * @param {string} field field to search for
+   * @param {string} filter expression to be used for filter
+   */
   @Get()
   public async getPaginated(
     @Query("page") page: number,
@@ -40,6 +54,11 @@ export class UserController extends Controller {
     return this.service.getPaginated({ page, limit, sort, field, filter });
   }
 
+  /**
+   * @summary Creates a new user
+   *
+   * @param {IUserDto} body dto with the new user info
+   */
   @Response(400, "Bad request")
   @Security("admin")
   @Post()
@@ -47,6 +66,12 @@ export class UserController extends Controller {
     return this.service.create(body);
   }
 
+  /**
+   * @summary Updates user info
+   *
+   * @param {string} id The id of the user
+   * @param {IUserDto} body dto with the updated user info
+   */
   @Response(400, "Bad request")
   @Security("admin")
   @Put("{id}")
@@ -54,6 +79,11 @@ export class UserController extends Controller {
     return this.service.update(id, body);
   }
 
+  /**
+   * @summary Deletes user from DB
+   *
+   * @param {string} id The id of the user
+   */
   @Security("admin")
   @Delete("{id}")
   public async delete(id: string): Promise<string> {
