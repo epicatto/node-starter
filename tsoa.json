@@ -3,7 +3,26 @@
     "entryFile": "./build/routes.ts",
     "outputDirectory": "./build/swagger",
     "specMerging": "recursive",
-    "spec": {},
+    "spec": {
+      "paths": {
+        "/files/download": {
+          "post": {
+            "produces": [
+              "image/png"
+            ],
+            "responses": {
+              "200": {
+                "description": "OK",
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "tags":[
       {
         "name": "User",
