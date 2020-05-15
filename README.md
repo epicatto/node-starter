@@ -1,6 +1,6 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/nexton-labs/node-starter-v2)
 
-[![CircleCI](https://circleci.com/gh/nexton-labs/node-starter-v2/tree/master.svg?style=svg)](https://circleci.com/gh/nexton-labs/node-starter-v2/tree/master)
+[![CircleCI](https://circleci.com/gh/nexton-labs/node-starter/tree/master.svg?style=svg)](https://circleci.com/gh/nexton-labs/node-starter/tree/master)
 # Node Starter
 
 
